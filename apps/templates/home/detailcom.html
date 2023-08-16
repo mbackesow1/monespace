@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+      {% load static %}
+    <link href="{% static 'css/bootstrap.min.css' %}" >
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/
+
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</head>
+<body  class="" style="background-color: #eee;">
+{% include 'nav.html' %}
+<section class="h-100 gradient-form" style="background-color: #eee;">
+  <div class="container md-6" >
+      <div class="row  d-flex justify-content-center align-items-center">
+    <div class="col-6">
+
+
+        <h4 class="text-center font-italic">Detail  Client</h4>
+        <ul class="list-group list-group-flush ">
+            <li   class="list-group-item text-center font-italic">
+                <strong>Nom du Client:</strong>
+                <span id="nomClient"> {{user.nompreu}}</span>
+            </li>
+            <li class="list-group-item text-center font-italic">
+                <strong>Email:</strong>
+                <span id="email">{{user.emailu}} </span>
+            </li>
+            <li class="list-group-item text-center font-italic">
+                <strong>Téléphone:</strong>
+                <span id="telephone">{{user.teleu}} </span>
+            </li>
+            <li class="list-group-item text-center font-italic">
+                <strong>Adresse:</strong>
+                <span id="adresse">{{user.adresseu}} </span>
+            </li>
+            <li class="list-group-item text-center font-italic">
+                <strong>Entreprise:</strong>
+                <span id="adresse">{{user.entreprise}} </span>
+            </li>
+        </ul>
+        <br>
+    </div>
+      </div>
+  </div>
+        <!--<button type="button" class="btn btn-primary" onclick="afficherFacture()">Afficher la Facture</button>-->
+    </div>
+    <div class="container">
+        <div class="row  d-flex justify-content-center align-items-center rounded">
+    <div class="col-6 rounded">
+         <h4 class="text-center font-italic">Detail  Commande</h4>
+        <ul class="list-group">
+            <li class="list-group-item text-center font-italic">
+                <strong>Date:</strong>
+                <span id="nomClient"> {{com.date}}</span>
+            </li>
+            <li class="list-group-item text-center font-italic">
+                <strong>Type  de commande:</strong>
+                <span id="email">{{com.action}} </span>
+            </li>
+            <li class="list-group-item text-center font-italic">
+                <strong>Produit:</strong>
+                <span id="telephone">{{pro.description}} </span>
+            </li>
+            <li class="list-group-item text-center font-italic">
+                <strong>Prix Unitaire:</strong>
+                <span id="adresse">{{pro.price}} </span>
+            </li>
+            <li class="list-group-item text-center font-italic">
+                <strong>Quantité</strong>
+                <span id="adresse">{{detcom.quantite}} </span>
+            </li>
+            <li class="list-group-item text-center font-italic">
+                <strong>Prix  total</strong>
+                <span id="adresse">{{com.total}} </span>
+            </li>
+            <li class="list-group-item text-center font-italic">
+                <button type="button" class="btn btn-primary" onclick="afficherFacture()">Voir liste  commande</button>
+            </li>
+
+        </ul>
+
+        <br>
+    </div></div>
+    </div>
+
+    </div>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script>
+        function afficherFacture() {
+            var nomClient = document.getElementById("nomClient").textContent;
+            var email = document.getElementById("email").textContent;
+            var telephone = document.getElementById("telephone").textContent;
+            var adresse = document.getElementById("adresse").textContent;
+
+            alert("Nom du Client: " + nomClient + "\nEmail: " + email + "\nTéléphone: " + telephone + "\nAdresse: " + adresse);
+        }
+    </script>
+    <div class="card">
+  <div class="card-body">
+    <div class="container mb-5 mt-3">
+      <div class="row d-flex align-items-baseline">
+        <div class="col-xl-9">
+          <p style="color: #7e8d9f;font-size: 20px;">Invoice >> <strong>ID: #123-123</strong></p>
+        </div>
+        <div class="col-xl-3 float-end">
+          <a class="btn btn-light text-capitalize border-0" data-mdb-ripple-color="dark"><i
+              class="fas fa-print text-primary"></i> Print</a>
+          <a class="btn btn-light text-capitalize" data-mdb-ripple-color="dark"><i
+              class="far fa-file-pdf text-danger"></i> Export</a>
+        </div>
+        <hr>
+      </div>
+
+      <div class="container">
+        <div class="col-md-12">
+          <div class="text-center">
+            <i class="fab fa-mdb fa-4x ms-0" style="color:#5d9fc5 ;"></i>
+            <p class="pt-0">Orbit city</p>
+          </div>
+
+        </div>
+
+
+        <div class="row">
+          <div class="col-xl-8">
+            <ul class="list-unstyled">
+              <li class="text-muted">A: <span style="color:#5d9fc5 ;">{{user.nompreu}}</span></li>
+              <li class="text-muted">{{user.adresseu}}</li>
+              <li class="text-muted">Senegal</li>
+              <li class="text-muted"><i class="fas fa-phone"></i>{{user.teleu}}</li>
+            </ul>
+          </div>
+          <div class="col-xl-4">
+            <p class="text-muted">Invoice</p>
+            <ul class="list-unstyled">
+              <li class="text-muted"><i class="fas fa-circle" style="color:#84B0CA ;"></i> <span
+                  class="fw-bold">ID:</span>#123-456</li>
+              <li class="text-muted"><i class="fas fa-circle" style="color:#84B0CA ;"></i> <span
+                  class="fw-bold">Creation Date: </span>Jun 23,2021</li>
+              <li class="text-muted"><i class="fas fa-circle" style="color:#84B0CA ;"></i> <span
+                  class="me-1 fw-bold">Status:</span><span class="badge bg-warning text-black fw-bold">
+                  Unpaid</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row my-2 mx-1 justify-content-center">
+          <table class="table table-striped table-borderless">
+            <thead style="background-color:#84B0CA ;" class="text-white">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Description</th>
+                <th scope="col">Qty</th>
+                <th scope="col">Unit Price</th>
+                <th scope="col">Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Pro Package</td>
+                <td>4</td>
+                <td>$200</td>
+                <td>$800</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Web hosting</td>
+                <td>1</td>
+                <td>$10</td>
+                <td>$10</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Consulting</td>
+                <td>1 year</td>
+                <td>$300</td>
+                <td>$300</td>
+              </tr>
+            </tbody>
+
+          </table>
+        </div>
+        <div class="row">
+          <div class="col-xl-8">
+            <p class="ms-3">Add additional notes and payment information</p>
+
+          </div>
+          <div class="col-xl-3">
+            <ul class="list-unstyled">
+              <li class="text-muted ms-3"><span class="text-black me-4">SubTotal</span>$1110</li>
+              <li class="text-muted ms-3 mt-2"><span class="text-black me-4">Tax(15%)</span>$111</li>
+            </ul>
+            <p class="text-black float-start"><span class="text-black me-3"> Total Amount</span><span
+                style="font-size: 25px;">$1221</span></p>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-xl-10">
+            <p>Thank you for your purchase</p>
+          </div>
+          <div class="col-xl-2">
+            <button type="button" class="btn btn-primary text-capitalize"
+              style="background-color:#60bdf3 ;">Pay Now</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

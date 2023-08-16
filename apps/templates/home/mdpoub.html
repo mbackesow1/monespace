@@ -1,0 +1,37 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="POST" class="post-form" action="traitemdpoub"
+      enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {{ mdpoub.as_p }}
+    <div class="col-sm-4">
+    <button type="submit" class="btn btn-primary">Generer</button>
+
+    </div>
+</form>
+
+
+</body>
+</html>-->
+{% load i18n %}
+
+{% autoescape off %}
+{% blocktrans %}You're receiving this email because you requested a password reset for your account at our site.{% endblocktrans %}
+
+{% trans "Please go to the following page and choose a new password:" %}
+{% block reset_link %}
+{{ protocol }}://{{ domain }}{% url 'password_reset_confirm' uidb64=uid token=token %}
+{% endblock %}
+
+{% trans "Your username, in case you've forgotten:" %} {{ user.get_username }}
+
+{% trans "Thanks for using our site!" %}
+
+{% trans "The Team" %}
+{% endautoescape %}

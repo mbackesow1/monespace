@@ -1,0 +1,52 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+      {% load static %}
+    <link href="{% static 'css/bootstrap.min.css' %}" >
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/
+
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</head>
+<body  class="" style="background-color: #eee;">-->
+{% include 'navent.html' %}
+  <div class="container" >
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <!--<div>
+        <div class="card rounded-12 text-black">
+          <div class="row g-0">
+            <div class="col-lg-12">
+              <div class="card-body  mx-md-12">
+                  <div >
+                  <div class="container">-->
+
+                    <table class="table table-striped">
+                        <h4 class="text-center font-italic">Liste des clients {{ noment|upper }} </h4>
+  <thead  class="table">
+                <tr scope="col" class="font-italic">
+                    <th  scope="col">Nom du client</th>
+                    <th scope="col">Compte client</th>
+                    <th scope="col">Modifier</th>
+                    <th scope="col">Supprimer</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for usercre in usercre %}
+                <tr  scope="row"   class="font-italic">
+                    <td>{{ usercre.nomclt }}</td>
+                    <td><a href="/monespace/listcre/voircpt/idclt={{ usercre.idclt }}">Visitez-le compte</a></td>
+                    <td><a   class="text-black" href="#"><i class="fas fa-edit"></i></a></td>
+                    <td><a href="#"  class="text-danger"><i class="fas fa-trash  text-dange "></i></a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

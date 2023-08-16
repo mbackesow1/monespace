@@ -1,0 +1,102 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} UI Tables {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+{% if lst  %}
+
+        <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header">
+                  <h4 class="card-title ">Precommande</h4>
+                  <p class="card-category"> Echeance</p>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead class=" text-primary">
+                        <th>
+                          Date Echeance
+                        </th>
+
+
+                        <th>
+                            Description du produit
+                        </th>
+                        <th>
+                            Numero Facture
+
+                        </th>
+                        <th>
+                            Debit Paiement
+
+                        </th>
+                        <th>
+                            Etat du Paiement
+
+                        </th>
+                        <th>
+                            Date Expiration
+
+                        </th>
+                        <th>
+                            Montant
+
+                        </th>
+
+                        <th>
+                          Telecharger
+                        </th>
+
+                      </thead>
+                      <tbody>
+
+                           {% for lst in  lst %}
+                <tr  scope="row " class="font-italic">
+                 <td>{{ lst.date}} </td>
+                     <td>{{ dmd.description}} </td>
+                     <td>{{ dmd.iddmd}} </td>
+                    <td>{{ dmd.debit}} </td>
+                    <td>
+    {% if lst.etatpayer %}
+        <span style="background: #4f4f4f">paye</span>
+    {% else %}
+        <span style="background: #997404">impaye</span>
+    {% endif %}
+</td>
+                <td>{{ dmd.dateexpir}} </td>
+                <td>{{ dmd.montant}} </td>
+
+
+
+                    <td>Telecharger</td>
+
+                </tr>
+
+                {% endfor %}
+                          <!---->
+
+
+
+                      </tbody>
+                    </table>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+
+             {% else %}
+    <div   class=" d-flex align-items-center justify-content-center" style="height: 200px;" >Aucune donnee</div>
+
+{% endif %}
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

@@ -1,0 +1,102 @@
+{% extends "layouts/baseent.html" %}
+
+{% block title %} UI Tables {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+
+        <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header">
+                  <h4 class="card-title ">Precommande</h4>
+                  <p class="card-category"> Echeance</p>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead class=" text-primary">
+                        <th>
+                          Date Echeance
+                        </th>
+
+
+                        <th>
+                            Description du produit
+                        </th>
+
+
+                      </thead>
+                      <tbody>
+                      <tr>
+                          <td></td>
+                          <td></td>
+
+                      </tr>
+                      <tr>
+                          <td>Nom Comple</td>
+                          <td>{{ usercre.nompreu }}</td>
+                      </tr>
+                      <tr>
+                          <td>Date</td>
+                          <td>{{ dmd.datedebut}} }}</td>
+                      </tr>
+                      <tr>
+                          <td>Entreprise</td>
+                          <td>{{ usercre.entreprise }}</td>
+                      </tr>
+                      <tr>
+                          <td>Secteur</td>
+                          <td>{{ usercre.sectu }}</td>
+                      </tr>
+                      <tr>
+                          <td>Poste</td>
+                          <td>{{ usercre.postu }}</td>
+                      </tr>
+                      <tr>
+                          <td>Contrat</td>
+                          <td></td>
+                      </tr>
+                      <tr>
+                          <td>Salaire</td>
+                          <td></td>
+                      </tr>
+                       <tr>
+                          <td>Montant</td>
+                          <td>{{ dmd.montantt }}</td>
+                      </tr>
+                       <tr>
+                           <!--<td>
+
+                               <form action="/monespace/valider" method="post">
+
+    <input type="hidden" id="valeurCachee" name="iddmd" value="{{dmd.iddmd  }}">
+                                   <input type="hidden" id="valeurCachee" name="status" value="1">
+    <br><br>
+    <input type="submit" value="valider DEMANDE">
+</form>
+                           </td>-->
+                          <td><a href="/monespace/valider/iddmd={{dmd.iddmd  }}">valider DEMANDE</a></td>
+                          <td><a href="/monespace/refuser/iddmd={{  dmd.iddmd }}">REFUSER DEMANDE</a></td>
+                      </tr>
+
+
+
+
+                      </tbody>
+                    </table>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

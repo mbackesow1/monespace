@@ -1,0 +1,79 @@
+
+{% include 'nav.html' %}
+
+
+
+
+
+
+                             <div class="col-8">
+                                 <table class="table table-striped">
+                        <h4 class="text-center font-italic">Liste  des Trnasactions </h4>
+                                     <form>
+   <div class="form-group">
+      <label for="disabledSelect">Affichers</label>
+      <select id="disabledSelect" class="form-control">
+        <option>Afficher   toutes  les transaction</option>
+      </select>
+    </div>                     </form>
+                      {% if lst  %}
+
+
+
+  <div class="form-outline  d-flex flex-row"  style="width: 100%;height:20px;">
+      <label class="form-label" for="form1">Transaction</label>
+      <!--<button type="button" class="btn btn-primary">-->
+    <i class="fas fa-search"></i>
+  </button>
+
+    <input type="search" id="form1" class="form-control"  />
+
+
+</div>
+
+
+  </div>
+
+  <thead  >
+                <tr>
+                    <th  scope="col" class="font-italic">Comande</th>
+                    <th></th>
+                    <th scope="col" class="font-italic">Date</th>
+                    <th scope="col" class="font-italic">Etat</th>
+                    <th scope="col" class="font-italic">Total</th>
+                    <th scope="col" class="font-italic">Vandor</th>
+                </tr>
+            </thead  >
+
+            <tbody>
+                {% for lst in  lst %}
+                <tr  scope="row " class="font-italic">
+                    <td># {{lst.idcom }}  {{ userlog.nompreu }}</td>
+                    <td><a href="/monespace/traitecommande/voirdtl/idcom={{ lst.idcom }}">voir detail</a></td>
+                    <td>{{ lst.date }}</a></td>
+                    <td>{{ lst.etat }}</a></td>
+                    <td>{{lst.total}}</td>
+                    <td>{{lst.vandor}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+                      </div>
+
+                      {% else %}
+    <div   class=" d-flex align-items-center justify-content-center" style="height: 200px;" >Aucune donnee</div>
+{% endif %}
+<div class="col d-flex align-items-center justify-content-end" >
+    <a href="/monespace/ajoutcommande/idclt={{userlog.idu }}" class="btn btn-success" ">Ajouter</a>
+
+
+</div>
+
+
+    </div>
+</div>
+</div>
+
+
+</body>
+</html>

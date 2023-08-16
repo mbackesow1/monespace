@@ -1,0 +1,160 @@
+
+{% extends "layouts/base.html" %}
+
+{% block title %} UI Tables {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+ {% if lstfac  %}
+        <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header ">
+                  <!--<h4 class="card-title ">Simple Table</h4>
+                  <p class="card-category"> Here is a subtitle for this table</p>-->
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-mdb-toggle="collapse"
+      data-mdb-target="#navbarTogglerDemo03"
+      aria-controls="navbarTogglerDemo03"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <i class="fas fa-bars"></i>
+    </button>
+    <a class="navbar-brand" href="#">Liste des factures</a>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 " >
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Factures</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Factures</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled"
+            ></a
+          >
+        </li>
+          <li class="nav-item">
+          <a class="nav-link disabled"
+            ></a
+          >
+        </li>
+          <li class="nav-item">
+          <a class="nav-link disabled"
+            ></a
+          >
+        </li>
+          <li class="nav-item">
+          <a class="nav-link disabled"
+            ></a
+          >
+        </li>
+          <li class="nav-item">
+          <a class="nav-link disabled"
+            ></a
+          >
+        </li>
+          <li class="nav-item">
+          <a class="nav-link disabled"
+            ></a
+          >
+        </li>
+          <li class="nav-item">
+          <a class="nav-link disabled"
+            ></a
+          >
+        </li>
+          <li class="nav-item">
+          <a class="nav-link disabled"
+            ></a
+          >
+        </li>
+      </ul>
+      <form class="d-flex input-group w-auto">
+        <input
+          type="search"
+          class="form-control"
+          placeholder="Rechrerche........"
+          aria-label="Search"
+        />
+        <button
+          class="btn btn-outline-primary"
+          type="button"
+          data-mdb-ripple-color="dark"
+        >
+          Search
+        </button>
+      </form>
+    </div>
+  </div>
+</nav>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead class=" text-primary">
+                        <th>
+                          Numero
+                        </th>
+                        <th>
+
+                        </th>
+                        <th>
+                            Nom
+                        </th>
+                        <th>
+                            Total
+
+                        </th>
+                        <th>
+                          Date Comnade
+                        </th>
+                      <th>
+                          Date livraison
+                        </th>
+                      <th>
+                          Actoin
+                        </th>
+                      </thead>
+                      <tbody>
+
+                             {% for lst in  lstfac %}
+                <tr  scope="row " class="font-italic">
+                    <td># {{lst.idcom }}  </td>
+                    <td><a href="/monespace/traitecommande/voirdtl/idcom={{ lst.idcom }}">voir detail</a></td>
+                    <td> {{ userlog.nompreu }}</a></td>
+                    <td>{{ lst.total }}</a></td>
+                    <td>{{ lst.date }}</td>
+                    <td>{{ lst.date }}</td>
+                    <td><a href="#"  class="text-danger"><i class="fas fa-trash  text-dange "></i></a></td>
+                </tr>
+
+                {% endfor %}
+                          <!---->
+
+
+
+                      </tbody>
+                    </table>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+
+
+             {% else %}
+
+{% endif %}
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

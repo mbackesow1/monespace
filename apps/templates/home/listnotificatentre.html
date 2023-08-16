@@ -1,0 +1,168 @@
+{% extends "layouts/baseent.html" %}
+
+{% block title %} UI Tables {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+{% if ent  %}
+
+        <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <!--<div class="card-header card-header-primary">
+                  <h4 class="card-title ">Simple Table</h4>
+                  <p class="card-category"> Here is a subtitle for this table</p>-->
+                                        <h5>Liste  des  Precommandes</h5>
+                                      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-mdb-toggle="collapse"
+      data-mdb-target="#navbarTogglerDemo03"
+      aria-controls="navbarTogglerDemo03"
+      aria-expanded="false"
+      aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <a class="navbar-brand" href="#">Precommande</a><!--
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 " >
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">5 Tous</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">4 En cours</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled"
+            >5 En attente</a
+          >
+        </li>
+          <li class="nav-item">
+          <a class="nav-link disabled"
+            >2 Annule</a
+          >
+        </li>
+          <li class="nav-item">
+          <a class="nav-link disabled"
+            ></a
+          >
+              <li class="nav-item">
+          <a class="nav-link disabled"
+            ></a
+          >
+          <li class="nav-item">
+          <a class="nav-link disabled"
+            ></a
+          >
+          <li class="nav-item">
+          <a class="nav-link disabled"
+            ></a
+          >
+          <li class="nav-item">
+          <a class="nav-link disabled"
+            ></a
+          >
+
+        </li>-->
+
+      </ul>
+      <form class="d-flex input-group w-auto">
+        <input
+          type="search"
+          class="form-control"
+          placeholder="Rechrerche........"
+          aria-label="Search"
+        />
+        <button
+          class="btn btn-outline-primary"
+          type="button"
+          data-mdb-ripple-color="dark"
+        >
+          Search
+        </button>
+      </form>
+    </div>
+  </div>
+</nav>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead class=" text-primary">
+                        <th>
+                          Demande de Credit
+                        </th>
+                        <th></th>
+
+                        <th>
+                            Date
+                        </th>
+                        <th>
+                            Produit
+
+                        </th>
+
+
+
+                      </thead>
+                      <tbody>
+
+                           {% for lst in  list %}
+                <tr>
+                    <td># {{lst.iddmd }}  {{ lst.nomclt }}</td>
+                    <td><a href="/monespace/voirnotificationent/idclt={{  lst.idclt|urlencode }}&iddmd={{lst.iddmd|urlencode}}"><i class="material-icons" style="font-size: small;">remove_red_eye_outlined</i></a>
+                    </td>
+
+
+
+
+                    <td>{{ lst.datedebut }}</a></td>
+
+                <td>{{lst.description}}</td>
+
+
+                </tr>
+
+                {% endfor %}
+                          <!---->
+
+
+
+                      </tbody>
+                    </table>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+    <div class="col d-flex align-items-center justify-content-end" >
+    <a href="/monespace/ajoutproduitdmd/idclt={{userlog.idu }}" class="btn btn-success">
+    Crediter
+    </a>
+
+
+
+</div>
+
+             {% else %}
+    <div   class=" d-flex align-items-center justify-content-center" style="height: 200px;" >Aucune donnee</div>
+    <div class="col d-flex align-items-center justify-content-end" >
+    <a href="/monespace/ajoutproduitdmd/idclt={{userlog.idu }}" class="btn btn-success">
+    Crediter
+    </a>
+
+
+
+</div>
+{% endif %}
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

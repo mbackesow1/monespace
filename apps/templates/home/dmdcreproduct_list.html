@@ -1,0 +1,99 @@
+
+
+<!--<section class="h-100 gradient-form" style="background-color: #eee;">-->
+
+    <div class="col-8">
+<!--<div class="main_content">
+
+        <div class="info  h-100 gradient-form" style="background-color: #eee;">-->
+
+
+
+                   <table class="table table-striped">
+                        <h4 class="text-center font-italic">Liste  des  Produits </h4>
+  <thead  class="bg-primary text-white">
+      <tr>
+        <th>ID</th>
+        <th>Image</th>
+        <th>Prix</th>
+        <th>Description</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for product in products %}
+      <tr>
+        <td>{{ product.idpro }}</td>
+        <td>{{ product.mimage }}</td>
+        <td>{{ product.price }}</td>
+        <td>{{ product.description }}</td>
+        <td>
+          <button class="btn btn-primary"  type="button">
+        <a href="/monespace/condition/idpro={{  product.idpro|urlencode }}&idclt={{userlog.idu|urlencode}}" style="color:white;text-decoration: none;">
+        Ajouter
+        </a>
+    </button>
+
+
+
+
+
+
+      </tr>
+      {% endfor %}
+
+    </tbody>
+  </table>
+</div>
+
+  <script>
+    // Fonction pour ajouter au panier
+    function ajouterAuPanier(idProduit) {
+      // Ajouter votre logique ici pour ajouter le produit au panier
+      console.log(`Produit ${idProduit} ajouté au panier.`);
+    }
+  </script>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+        </div>
+</div></div>
+</div>
+</div>
+</div>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script  src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script  src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script>
+    $(document).ready(function(){
+     //jquery for toggle sub menus
+     $(‘.sub-btn’).click(function(){
+       $(this).next(‘.sub-menu’).slideToggle();
+       $(this).find(‘.dropdown’).toggleClass(‘rotate’);
+     });
+     //jquery for expand and collapse the sidebar
+     $(‘.menu-btn’).click(function(){
+       $(‘.side-bar’).addClass(‘active’);
+       $(‘.menu-btn’).css(“visibility”, “hidden”);
+     });
+     //Active cancel button
+     $(‘.close-btn’).click(function(){
+       $(‘.side-bar’).removeClass(‘active’);
+       $(‘.menu-btn’).css(“visibility”, “visible”);
+     });
+   });
+</script>-->
+
+
+</body>
+
+
+</html>

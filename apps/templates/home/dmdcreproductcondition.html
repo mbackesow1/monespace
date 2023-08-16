@@ -1,0 +1,83 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} UI Tables {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+
+        <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header">
+                  <h4 class="card-title ">Precommande</h4>
+                  <p class="card-category"> Echeance</p>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead class=" text-primary">
+                      <th>
+                            Prix
+                        </th>
+                        <th>
+                          Description
+                        </th>
+
+
+                        <th>
+                            Debit
+
+                        </th>
+                        <th>
+                            Date Expiration
+
+                        </th>
+                        <th>
+                          Autres
+                        </th>
+
+                      </thead>
+                      <tbody>
+
+                <tr  scope="row " class="font-italic">
+                    <td>{{ productdmd.price}} </td>
+                    <td>{{ productdmd.description}} </td>
+
+                    <td>Chaque mois 40.000</td>
+                    <td>dans  5 mois</td>
+</td>
+                    <td>C ccool</td>
+
+
+                </tr>
+
+
+                          <!---->
+
+
+
+                      </tbody>
+                        <tfoot>
+        <tr>
+            <td colspan="2">
+                <a href="/monespace/traitedmd/idpro={{  productdmd.idpro|urlencode }}&idclt={{userlog.idu|urlencode}}"" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">VALIDER</a>
+            </td>
+        </tr>
+    </tfoot>
+                    </table>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

@@ -1,0 +1,66 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} UI Tables {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+{% if lst  %}
+
+        <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header">
+                  <h4 class="card-title ">Precommande</h4>
+                  <p class="card-category">Notification</p>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead class=" text-primary">
+                        <th>
+                          SL
+                        </th>
+
+                        <th>
+                            Notification
+                        </th>
+                        <th>
+                            Action
+
+                        </th>
+
+                      </thead>
+                      <tbody>
+
+                           {% for lst in  lst %}
+                <tr  scope="row " class="font-italic">
+                    <td>{{lst.idnot }}</td>
+                <td>{{lst.message }}</td>
+                <td><button type="button" class="btn btn-danger">Voir demande</button></td>
+                </tr>
+
+                {% endfor %}
+                          <!---->
+
+
+
+                      </tbody>
+                    </table>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+
+             {% else %}
+    <div   class=" d-flex align-items-center justify-content-center" style="height: 200px;" >Aucune donnee</div>
+
+{% endif %}
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

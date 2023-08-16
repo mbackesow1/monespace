@@ -1,0 +1,89 @@
+    <div class="sidebar" data-color="purple" data-background-color="white" data-image="/static/assets/img/sidebar-1.jpg">
+      <div class="logo">
+        <a target="_blank" rel="noopener noreferrer" 
+           href="https://appseed.us/admin-dashboards/django-dashboard-material" class="simple-text logo-normal">
+          <img src="/static/assets/img/lo.JPG"
+                    style="width: 185px;" alt="logo"/>
+        </a>
+      </div>
+      <div class="sidebar-wrapper">
+        <ul class="nav">
+        {% if request.user.is_authenticated or 1  %}
+
+
+          <li class="nav-item {% if 'page-user' in segment %} active {% endif %}">
+            <a class="nav-link" href="/page-user.html"  id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="material-icons">shopping_basket</i>
+              <p>Produit achat direct</p>
+            </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
+                  <a class="dropdown-item" href="/monespace/affichecommande/idclt={{ userlog.idu }}">Transaction</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="/monespace/affichenotification/idclt={{ userlog.idu }}" >Notification</a>
+              <a class="dropdown-item" href="/monespace/affichefactures/idclt={{ userlog.idu}}" >Facture</a>
+                </div>
+          </li>
+          <li class="nav-item {% if 'ui-tables' in segment %} active {% endif %}">
+            <a class="nav-link" href="/ui-tables.html"  id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="material-icons">ballot</i>
+              <p>Demande de credit</p>
+            </a>
+           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
+                  <a class="dropdown-item" href="/page-user.html">Profile</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#" >Log out</a>
+                </div>
+          </li>
+          <li class="nav-item {% if 'ui-typography' in segment %} active {% endif %}">
+            <a class="nav-link" href="/ui-typography.html" id="navbarDropdownProfile"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="material-icons">library_books</i>
+              <p>Demande de Precommande</p>
+            </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
+                  <a class="dropdown-item" href="/monespace/afficheprecommande/idclt={{ userlog.idu }}">Mes demandes</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="/monespace/afficheecheancepre/idclt={{ userlog.idu }}" >Echeanaces</a>
+              <a class="dropdown-item" href="/monespace/affichenotificationpre/idclt={{ userlog.idu}}" >Notifications</a>
+                </div>
+          </li>
+          <li class="nav-item {% if 'ui-icons' in segment %} active {% endif %}">
+            <a class="nav-link" href="/ui-icons.html" id="navbarDropdownProfile"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="material-icons">credit_card</i>
+              <p>Recharge de credit</p>
+            </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
+                  <a class="dropdown-item" href="/monespace/affichedmdcredit/idclt={{ userlog.idu }}">Mes demandes</a>
+                  <div class="dropdown-divider"></div>
+                  <!--<a class="dropdown-item" href="/monespace/afficheecheancedmd/idclt={{ userlog.idu }}" >Echeanaces</a>-->
+              <a class="dropdown-item" href="/monespace/affichenotificationdmd/idclt={{ userlog.idu}}" >Notifications</a>
+                </div>
+          </li>
+            <li class="nav-item {% if 'index' in segment %} active {% endif %}">
+            <a class="nav-link" href="/">
+              <i class="material-icons">dashboard</i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+
+          <li class="nav-item ">
+            <a class="nav-link" href="/monespace/deconex" >
+              <i class="material-icons">directions_run</i>
+              <p>Deconnexion</p>
+            </a>
+          </li>
+        {% else %}
+
+          <li class="nav-item active">
+            <a class="nav-link" 
+               target="_blank" rel="noopener noreferrer"  
+               href="https://appseed.us/admin-dashboards/django-dashboard-material-pro">
+              <i class="material-icons">unarchive</i>
+              <p>PRO Version</p>
+            </a>
+          </li>          
+
+        {% endif %}
+        </ul>
+      </div>
+
+    </div>

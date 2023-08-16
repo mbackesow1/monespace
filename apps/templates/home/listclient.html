@@ -1,0 +1,63 @@
+{% extends "layouts/baseent.html" %}
+
+{% block title %} UI Tables {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+    <!--<div class="row d-flex justify-content-center align-items-center h-100">
+      <div>
+        <div class="card rounded-12 text-black">
+          <div class="row g-0">
+            <div class="col-lg-12">
+              <div class="card-body  mx-md-12">
+                  <div >
+                  <div class="container">-->
+
+                  {% if noment  %}
+
+        <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header">
+                  <h4 class="card-title ">Precommande</h4>
+                  <p class="card-category">Notification</p>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead class=" text-primary">
+                    <th    >Nom du client</th>
+                    <th   >Compte client</th>
+                    <th   >Annuler</th>
+                    <th   >Valider</th>
+                </tr>
+
+        </thead>
+        <tbody>
+            {% for usercre in usercre %}
+                <tr>
+                    <td>{{ usercre.nomclt }}</td>
+                    <td><a href="{{ usercre.lien_compte }}">visiter compte</a></td>
+                    <td><a href="#"  class="text-sucess"><i class="fas fa-times"></i></a></td>
+                    <td><a href="#"  class="text-danger"><i class="fas fa-check"></i></a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+
+
+                </div>
+              </div>
+            </div>
+
+             {% else %}
+    <div   class=" d-flex align-items-center justify-content-center" style="height: 200px;" >Aucune donnee</div>
+
+{% endif %}
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

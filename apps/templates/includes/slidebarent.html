@@ -1,0 +1,69 @@
+    <div class="sidebar" data-color="purple" data-background-color="white" data-image="/static/assets/img/sidebar-1.jpg">
+      <div class="logo">
+        <a target="_blank" rel="noopener noreferrer"
+           href="https://appseed.us/admin-dashboards/django-dashboard-material" class="simple-text logo-normal">
+          <img src="/static/assets/img/lo.JPG"
+                    style="width: 185px;" alt="logo"/>
+        </a>
+      </div>
+      <div class="sidebar-wrapper">
+        <ul class="nav">
+        {% if request.user.is_authenticated or 1  %}
+
+
+          <li class="nav-item {% if 'page-user' in segment %} active {% endif %}">
+            <a class="nav-link" href="/monespace/client/nom={{ ent.nom }}"  >
+              <i class="material-icons">shopping_basket</i>
+              <p>Gestion des Clients</p>
+            </a>
+
+          </li>
+          <li class="nav-item {% if 'ui-tables' in segment %} active {% endif %}">
+            <a class="nav-link" href="/monespace/notification/nom={{ ent.nom }}" >
+              <i class="material-icons">ballot</i>
+              <p>Notification</p>
+            </a>
+           <d
+          </li>
+          <li class="nav-item {% if 'ui-typography' in segment %} active {% endif %}">
+            <a class="nav-link" href="/ui-typography.html" id="navbarDropdownProfile"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="material-icons">library_books</i>
+              <p>Programme d ' affiliation</p>
+            </a>
+
+          <!--</li>
+          <li class="nav-item {% if 'ui-icons' in segment %} active {% endif %}">
+            <a class="nav-link" href="/ui-icons.html" id="navbarDropdownProfile"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="material-icons">credit_card</i>
+              <p>Recharge de credit</p>
+            </a>
+
+          </li>-->
+            <li class="nav-item {% if 'index' in segment %} active {% endif %}">
+            <a class="nav-link" href="/">
+              <i class="material-icons">dashboard</i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="#" >
+              <i class="material-icons">directions_run</i>
+              <p>Deconnexion</p>
+            </a>
+          </li>
+        {% else %}
+
+          <li class="nav-item active">
+            <a class="nav-link"
+               target="_blank" rel="noopener noreferrer"
+               href="https://appseed.us/admin-dashboards/django-dashboard-material-pro">
+              <i class="material-icons">unarchive</i>
+              <p>PRO Version</p>
+            </a>
+          </li>-->
+
+        {% endif %}
+        </ul>
+      </div>
+
+    </div>
