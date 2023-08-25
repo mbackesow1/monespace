@@ -19,7 +19,9 @@ from django.db import models
 class Users(models.Model):
     entreprise1 = "ccbm"
     entreprise2 = "orbit"
+    entreprise ='No Entreprise'
     ROLE_CHOICES = (
+        (entreprise,'No Entreprise') ,
         (entreprise1, 'ccbm'),
         (entreprise2, 'orbit'),
     )
@@ -30,9 +32,9 @@ class Users(models.Model):
     teleu = models.CharField(max_length=15, null=True, verbose_name="Votre Télephone")
     mdpu = models.CharField(max_length=128, null=True, verbose_name="Votre  Mot de Passe")
     # entreu = models.CharField(max_length=128,null=True)
-    entreprise = models.CharField(max_length=30, choices=ROLE_CHOICES)
-    postu = models.CharField(max_length=128, null=True, verbose_name="Poste")
-    sectu = models.CharField(max_length=128, null=True, verbose_name="Secteur")
+    entreprise = models.CharField(max_length=30, choices=ROLE_CHOICES , null=True,default="entreprise")
+    postu = models.CharField(max_length=128, null=True, verbose_name="Poste", default="post")
+    sectu = models.CharField(max_length=128, null=True, verbose_name="Secteur", default="secteur")
     adresseu = models.CharField(max_length=15, null=True, verbose_name="Votre Adresse")
     dateinsu = models.DateTimeField("date creation", null=True, default=datetime.now)
     # image = models.CharField(max_length=128, null=True)

@@ -3,10 +3,14 @@ from .models import Users, Entreprise, DmdCredit, Product, Commande, Compte
 
 
 class UsersForm(forms.ModelForm):
+    #entreprise = forms.CharField(required=False)
+
+
     class Meta:
         model = Users
         # fields = "__all__"
         exclude = ['dateinsu']
+        #entreprise=Users.entreprise(required=False)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

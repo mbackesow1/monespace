@@ -88,6 +88,7 @@ def traitercompte(request):
         # form = EmployeeForm(request.POST , request.FILES)
         form = UsersForm(request.POST, request.FILES)
         if form.is_valid():
+
             # try:
             form.save()
            # formi = FormLogin()
@@ -255,7 +256,7 @@ def listenotific(request, nom):
     return render(request, 'home/listenoti.html', {'usercre': lst, 'ent': ent})
 @csrf_exempt
 def listclient(request, nom):
-    lst=DmdCredit.objects.filter(noment=nom, status=0)
+    lst=DmdCredit.objects.filter(noment=nom, status=1)
     ent=Entreprise.objects.get(nom=nom)
     #lst = Users.objects.filter(entreprise=nom)
     # usercre = Users.objects.filter(idu=lst.values('idclt'))
@@ -266,10 +267,10 @@ def listclient(request, nom):
 @csrf_exempt
 def  lsitedmdcredit(request, nom):
     ent=Entreprise.objects.get(nom=nom)
-    lst = DmdCredit.objects.filter(noment=nom, status=0)
+    lst = DmdCredit.objects.filter(noment=nom, status=1)
     # usercre = Users.objects.filter(idu=lst.values('idclt'))
     # usercre = Users.objects.get(idu=lst.idclt)
-    return render(request, 'home/listnotificatentre.html', {'list': lst , "ent":ent})
+    return render(request, 'home/listnotificatentre.html', {'lst': lst , "ent":ent})
 
 
 
@@ -287,49 +288,45 @@ def voirnotification(request, idclt, iddmd):
 @csrf_exempt
 def validerdmd(request,iddmd):
     dmdu=DmdCredit.objects.get(iddmd=iddmd)
-    dmdup= DmdCredit.objects.get(iddmd=iddmd).update(status=1)
-    ent=Entreprise.objects.get(nom= dmdu.noment)
-    DmdCredit.objects.update_or_create(iddm=iddmd, defaults={'status': 1})
-
-    # b5.name = "New name"
-    #>> > b5.save()
-    '''
-    sta=1
-    dmdu.status=sta
-    dmdu.noment=dmdup.noment
-    dmdu.idclt=dmdup.idclt
-    dmdu.nomclt=dmdup.nomclt
-    dmdu.idpro=dmdup.idpro
-    dmdu.description=dmdup.description
-    dmdu.noment=dmdup.noment
-    dmdu.dateexpir=dmdup.dateexpir
-    dmdu.datedebut=dmdup.datedebut
-    dmdu.etatpayer=dmdup.etatpayer
-    dmdu.montant=dmdup.montant
-    '''
-    #dmd=DmdCredit.objects.get(iddmd=iddmd)
+    dmdup= DmdCredit.objects.get(iddmd=iddmd)
+    dmdu.status=1;
     dmdu.save()
+    #pro=Product.objects.get(idpro=dmdu.idpro)
+    noti = Notification(
+        etat=0,
+        typenot='dmd',
+        idclt=dmdu.idclt,
+        message=f'Votre  demande  de credit  concernant le produit  { dmdu.description}  est validee .'
+    )
+    noti.save()
 
-    lst = DmdCredit.objects.filter(noment=dmdu.noment, status=0)
-    return render(request, 'home/listnotificatentre.html', {'lst': lst, "ent":ent})
-    #userup = Users.objects.get(idu=idclt)
-    #dmd=DmdCredit.objects.get(iddmd=iddmd)
-    #return render(request, 'home/voirdmdcredit.html', {'usercre': userup,'dmd':dmd})
+    ent=Entreprise.objects.get(nom= dmdu.noment)
+    #DmdCredit.objects.update_or_create(iddmd=iddmd, defaults={'status': 1})
+
+
+
+    lst = DmdCredit.objects.filter(noment=dmdu.noment, status=1)
+    return render(request, 'home/listclient.html', {'usercre': lst, 'ent': ent})
+    #return render(request, 'home/listnotificatentre.html', {'lst': lst, "ent":ent})
+
 
 @csrf_exempt
 def refuserdmd(request, iddmd):
     dmdu = DmdCredit.objects.get(iddmd=iddmd)
-    DmdCredit.objects.get(iddmd=iddmd).delete()
+    #DmdCredit.objects.get(iddmd=iddmd).delete()
     ent = Entreprise.objects.get(nom=dmdu.noment)
     lst = DmdCredit.objects.filter(noment=dmdu.noment, status=0)
-    #dmd.delete()
+    noti = Notification(
+        etat=0,
+        typenot='dmd',
+        idclt=dmdu.idclt,
+        message=f'Votre  demande  de credit  concernant le produit  { dmdu.description }  est  refuse'
+    )
+    noti.save()
+    dmdu.delete()
 
     #dmd.save()
-    return render(request, 'home/listnotificatentre.html', {'list': lst,"ent":ent})
-
-    #userup = Users.objects.get(idu=idclt)
-    dmd=DmdCredit.objects.get(iddmd=iddmd)
-    #return render(request, 'home/voirdmdcredit.html', {'usercre': userup,'dmd':dmd})
+    return render(request, 'home/listnotificatentre.html', {'lst': lst,"ent":ent})
 
 
 
@@ -457,6 +454,18 @@ def affichenotication(request, idclt):
     return render(request, "home/listnotificat.html", {"lst": lst, "userlog": user})
 
     # return render(request, "formqt.html", {"idpro": idpro, "idclt": idclt, 'userlog': user})
+@csrf_exempt
+def voirnotificationclientpre(request , idnot):
+    pre='pre'
+    notpre=Notification.objects.get(idnot=idnot ,typenot=pre)
+    user=user = Users.objects.get(idu=notpre.idclt)
+    return render(request, 'home/listnotificatentre.html', {"pre": notpre, "userlog": user})
+@csrf_exempt
+def voirnotificationclientdmd(request , idnot):
+    pre='dmd'
+    notpre=Notification.objects.get(idnot=idnot ,typenot=pre)
+    user=user = Users.objects.get(idu=notpre.idclt)
+    return render(request, 'home/listnotificatentre.html', {"pre": notpre, "userlog": user})
 
 
 #####Fin  gestion des commandes
@@ -512,6 +521,13 @@ def traiteprecommande(request):
 
     precom = Precommande(idpro=idpro, idclt=idclt, nbrjour=nbrj, prix=pro.price, description=pro.description)
     precom.save()
+    noti = Notification(
+        etat=0,
+        typenot='pre',
+        idclt=dmdu.idclt,
+        message=f'Votre  precommande  du  produit  {pro.description}  est validee .'
+    )
+    noti.save()
     lstpre = Precommande.objects.filter(idclt=idclt)
     lst = Precommande.objects.filter(idclt=idclt)
     return render(request, "home/afficheprecomm.html", {"userlog":usercmd,"com": commande, "usercmd": usercmd, "lstpre": lstpre,"lst":lst})

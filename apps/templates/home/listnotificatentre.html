@@ -6,7 +6,7 @@
 {% block stylesheets %}{% endblock stylesheets %}
 
 {% block content %}
-{% if ent  %}
+{% if lst  %}
 
         <div class="row">
             <div class="col-md-12">
@@ -112,7 +112,7 @@
                       </thead>
                       <tbody>
 
-                           {% for lst in  list %}
+                           {% for lst in  lst %}
                 <tr>
                     <td># {{lst.iddmd }}  {{ lst.nomclt }}</td>
                     <td><a href="/monespace/voirnotificationent/idclt={{  lst.idclt|urlencode }}&iddmd={{lst.iddmd|urlencode}}"><i class="material-icons" style="font-size: small;">remove_red_eye_outlined</i></a>
@@ -153,13 +153,16 @@
              {% else %}
     <div   class=" d-flex align-items-center justify-content-center" style="height: 200px;" >Aucune donnee</div>
     <div class="col d-flex align-items-center justify-content-end" >
-    <a href="/monespace/ajoutproduitdmd/idclt={{userlog.idu }}" class="btn btn-success">
+    <!--<a href="/monespace/ajoutproduitdmd/idclt={{userlog.idu }}" class="btn btn-success">
     Crediter
     </a>
 
 
 
 </div>
+
+    <div   class=" d-flex align-items-center justify-content-center" style="height: 200px;" >Aucune donnee</div>
+-->
 {% endif %}
 
 {% endblock content %}

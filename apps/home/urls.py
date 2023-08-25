@@ -92,8 +92,10 @@ path("client/nom=<str:nom>", listclient , name="connecterurlgghhhjh"),
 path("notification/nom=<str:nom>", lsitedmdcredit , name="connecterurlgghhhjh"),
 path("voirnotificationent/idclt=<int:idclt>&iddmd=<int:iddmd>", voirnotification  , name="connecterurlgghh"),
 
-path("valider/iddmd=<int:iddmd>", validerdmd ," dyugdgfhf "),
-path("refuser/iddmd=<int:iddmd>", refuserdmd  ,"dgdgdgjhbv"),
+path("valider/<int:iddmd>", validerdmd ,name="gdgfhf "),
+path("refuser/iddmd=<int:iddmd>", refuserdmd  ,name="dgdgdgjhbv"),
+path("voirnotificatpre/idnot=<int:iddnot>", voirnotificationclientpre  ,name="dgdgdgjhbv") ,
+path("voirnotificatdmd/idnot=<int:iddnot>", voirnotificationclientdmd  ,name="dgdgdgjhbv"),
 
 
 
